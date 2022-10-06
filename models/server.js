@@ -1,9 +1,10 @@
 const express = require('express');
-let cors = require('cors');
-
-class Server{
+const cors = require('cors');
+ 
+ class Server{
     constructor(){
-        this.app = express();
+        this.app =  express();
+        this.middlewares();
         this.routes();
         this.port = process.env.PORT;
     }
@@ -13,6 +14,7 @@ class Server{
     }
 
     middlewares(){
+        // Directorio público
         this.app.use(express.static('public'));
         this.app.use(cors());
     }
@@ -23,6 +25,7 @@ class Server{
         })
     }
 
-}
 
-module.exports = Server;
+ }
+
+ module.exports = Server;
